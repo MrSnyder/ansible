@@ -1,6 +1,9 @@
 - hosts: localhost
   become: true
   tasks:
-  - name: Install htop
-    apt: name=htop
+  - name: Add PPAs
+    apt_repository:
+      repo: 'ppa:phoerious/keepassxc'
+  - name: Install packages
+    apt: name=keepassxc
 
