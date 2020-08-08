@@ -3,6 +3,9 @@
 ## Ubuntu
 * Encrypt harddisk (LUKS)
 
+## Fix audio device switching when plugging docking station
+TODO
+
 ## Bluetooth mouse
 ```bash
 bluetoothctl
@@ -55,6 +58,8 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo gdebi google-chrome-stable_current_amd64.deb
 ```
 
+* Add extension "URL in title"
+
 ## Slack
 ```bash
 snap-store.ubuntu-software --search slack
@@ -65,8 +70,30 @@ snap-store.ubuntu-software --search slack
 sudo apt install powertop
 ```
 
-## KVM
+## VirtualBox
+https://www.virtualbox.org/wiki/Linux_Downloads
+```bash
+sudo su -
+echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian focal contrib" > /etc/apt/sources.list.d/virtualbox.list
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
+apt update
+apt-cache policy virtualbox-6.1
+apt install virtualbox-6.1
 ```
+
+* Download extension pack: https://www.virtualbox.org/wiki/Downloads
+* Install via UI (Einstellungen -> Zusatzpakete)
+* Restore folder "VirtualBox VMs"
+* Add Virtual Machine files via UI
+* Datei -> Host-only Netzwerk Manager -> Erzeugen
+
+```bash
+# get usb devices to show up
+sudo usermod -a -G vboxusers $USER
+```
+
+## KVM
+```bash
 sudo apt install -y qemu qemu-kvm libvirt-daemon bridge-utils virt-manager virtinst
 sudo systemctl is-active libvirtd
 sudo usermod -aG libvirt $USER
