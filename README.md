@@ -60,6 +60,11 @@ sudo gdebi google-chrome-stable_current_amd64.deb
 snap-store.ubuntu-software --search slack
 ```
 
+## Laptop tools
+```bash
+sudo apt install powertop
+```
+
 ## KVM
 ```
 sudo apt install -y qemu qemu-kvm libvirt-daemon bridge-utils virt-manager virtinst
@@ -69,16 +74,12 @@ sudo usermod -aG kvm $USER
 ```
 * Logout / Login from Gnome
 
-## Convert VirtualBox Windows 10 VM to KVM
-http://blog.it-concepts.de/2019/08/migration-von-windows-10-virtualbox-guest-nach-kvm/?lang=en
+## Install Windows 10 in KVM
+https://dennisnotes.com/note/20180614-ubuntu-18.04-qemu-setup/
 https://techpiezo.com/linux/shared-folder-in-qemu-virtual-machine-windows/
-```bash
-qemu-img convert -f vdi -O qcow2 Windows10.vdi ~/tmp/Windows10.qcow2
-```
 
-## Laptop tools
 ```bash
-sudo apt install powertop
+virt-xml win10 --edit --confirm --qemu-commandline '-net nic -net user,smb=/home/markus/.kvm-share'
 ```
 
 ## Ansible-Pull (not in use yet)
